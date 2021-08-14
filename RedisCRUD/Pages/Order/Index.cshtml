@@ -1,0 +1,40 @@
+﻿@page
+@model RedisCRUD.Pages.Order.IndexModel
+@{
+    ViewData["Title"] = "My Store";
+}
+
+<h1>Order details</h1>
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.ProductPrice</td>
+                    <td>@item.Qty</td>
+                    <td>
+                        <button type="submit" asp-page-handler="delete" asp-route-id="@item.ID">
+                            Delete
+                        </button>
+                        <button type="submit" asp-page-handler="done" asp-route-id="@item.ID">
+                            Done
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-page="Add">Add Item</a>
+</form>

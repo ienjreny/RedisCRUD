@@ -1,0 +1,15 @@
+﻿@page
+@model RedisCRUD.Pages.Order.AddModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "My Store";
+}
+
+<h1>Select Products</h1>
+<form method="post">
+    <select asp-items="@Model.Products" asp-for="ProductID">
+        <option value="-1">Select product</option>
+    </select>
+    <input type="text" name="qty" value="" asp-for="Qty" placeholder="qty" />
+    <input type="submit" name="name" value="Add" />
+</form>

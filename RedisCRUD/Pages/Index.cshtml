@@ -1,0 +1,57 @@
+﻿@page
+@model IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "My Store";
+}
+
+
+<h1>Search</h1>
+<form method="get">
+    Name:
+    <input asp-for="Product.Name" name="name" id="name" />
+    <input type="submit" value="Search" />
+</form>
+
+<a asp-page="Index">Reset</a>
+
+<br />
+<br />
+<h1>Products</h1>
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.ID</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@product.ID">Edit</a> |
+                        <button type="submit" asp-page-handler="delete" asp-route-id="@product.ID">
+                            delete
+                        </button>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="4">
+                    @for (int i = 1; i <= Model.PagesCount; i++)
+                    {
+                        <a href="?page=@(i)">@(i)</a>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a asp-page="Add">Create New</a>
+</form>

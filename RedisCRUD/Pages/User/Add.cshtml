@@ -1,0 +1,14 @@
+﻿@page
+@model RedisCRUD.Pages.User.AddModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+}
+
+<p>Enter a user details:</p>
+
+<form method="post">
+    Name:
+    <input asp-for="MyUser.FullName" />
+    
+    <input type="submit" />
+</form>
