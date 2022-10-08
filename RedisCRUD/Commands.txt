@@ -1,0 +1,26 @@
+﻿
+
+Drop idx_products
+FT.DROPINDEX idx_products
+
+Create idx_products
+FT.CREATE idx_products PREFIX 1 product: SCHEMA name TEXT SORTABLE price NUMERIC id TAG
+
+======================
+
+Drop idx_users
+FT.DROPINDEX idx_users
+
+Create idx_users
+FT.CREATE idx_users PREFIX 1 user: SCHEMA name TEXT SORTABLE id TAG
+
+======================
+
+Drop idx_orders
+FT.DROPINDEX idx_orders
+
+Create idx_orders
+FT.CREATE idx_orders PREFIX 1 order: SCHEMA product_name TEXT SORTABLE id TAG product_id TAG price NUMERIC qty NUMERIC
+
+======================
+
